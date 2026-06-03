@@ -1,91 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presión Arterial</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presión Arterial</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 
 <div class="phone">
 
-    <div class="header">
-        <span class="back">←</span>
-        <h1>Presión arterial</h1>
-    </div>
+    <div id="registro" class="pantalla activa">
 
-    <div class="tabs">
-        <button class="active">Registro</button>
-        <button>Historial</button>
-    </div>
+        <div class="card registro-card">
 
-    <div class="fecha">
-        Hoy, 06 de mayo
-    </div>
+            <h2 class="titulo-registro">Crear Cuenta</h2>
+            <p class="subtitulo">Es rápido y fácil</p>
 
-    <div class="card">
+            <input type="text" class="input-registro" placeholder="Nombre completo">
 
-        <div class="fecha-registro">
-            <span>06 de mayo, 2024</span>
-            <span>8:30 AM</span>
+            <input type="email" class="input-registro" placeholder="Correo electrónico">
+
+            <input type="text" class="input-registro" placeholder="Numero del chip">
+
+            <input type="password" class="input-registro" placeholder="Contraseña">
+
+            <input type="password" class="input-registro" placeholder="Confirmar contraseña">
+            <div class="terminos">
+    <input type="checkbox" id="terminos" required>
+
+    <label for="terminos">
+        Acepto los Términos y Condiciones y la Política de Privacidad
+    </label>
+</div>
+
+            <button class="guardar" onclick="registrar()">
+                Registrarme
+            </button>
+
         </div>
-
-        <div class="presion-box">
-            <h2>98/63  mmHg</h2>
-            <span>💗 Baja</span>
-        </div>
-
-        
-
-        <h3>Síntomas asociados</h3>
-
-        <div class="chips">
-            <span>Mareo</span>
-            <span>Fatiga</span>
-            <span>Náuseas</span>
-            <span>Palpitaciones</span>
-            <span>Niebla mental</span>
-            <span>Dolor de cabeza</span>
-            <span>Intolerancia al calor</span>
-        </div>
-
-        <h3>Notas adicionales</h3>
-
-        <textarea>Me sentí un poco mareada al levantarme.</textarea>
-
-        <button class="guardar">Guardar</button>
 
     </div>
 
-    <div class="bottom-nav">
-        <div class="nav-item active">
-            🏠
-            <span>Inicio</span>
+    <div id="presion" class="pantalla">
+
+        <div class="header">
+            <span class="back" onclick="volverRegistro()">←</span>
+            <h1>Presión arterial</h1>
         </div>
 
-        <div class="nav-item">
-            📝
-            <span>Registro</span>
+        <div class="tabs">
+            <button class="active">Registro</button>
+            <button>Historial</button>
         </div>
 
-        <div class="nav-item">
-            📖
-            <span>Aprender</span>
+        <div class="fecha">
+            Hoy, 06 de mayo
         </div>
 
-        <div class="nav-item">
-            👥
-            <span>Comunidad</span>
+        <div class="card">
+
+            <div class="fecha-registro">
+                <span>06 de mayo, 2024</span>
+                <span>8:30 AM</span>
+            </div>
+
+            <div class="presion-box">
+                <h2>98/63 mmHg</h2>
+                <span>💗 Baja</span>
+            </div>
+
+            <h3>Síntomas asociados</h3>
+
+            <div class="chips">
+                <span>Mareo</span>
+                <span>Fatiga</span>
+                <span>Náuseas</span>
+                <span>Palpitaciones</span>
+                <span>Niebla mental</span>
+                <span>Dolor de cabeza</span>
+                <span>Intolerancia al calor</span>
+            </div>
+
+            <h3>Notas adicionales</h3>
+
+            <textarea>
+Me sentí un poco mareada al levantarme.
+            </textarea>
+
+            <button class="guardar">
+                Guardar
+            </button>
+
         </div>
 
-        <div class="nav-item">
-            👤
-            <span>Perfil</span>
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                🏠
+                <span>Inicio</span>
+            </div>
+
+            <div class="nav-item">
+                📝
+                <span>Registro</span>
+            </div>
+
+            <div class="nav-item">
+                📖
+                <span>Aprender</span>
+            </div>
+
+            <div class="nav-item">
+                👥
+                <span>Comunidad</span>
+            </div>
+
+            <div class="nav-item">
+                👤
+                <span>Perfil</span>
+            </div>
         </div>
+
     </div>
 
 </div>
 
-</body>
-</html>
+<script>
+function registrar(){
+
+    const acepta =
+        document.getElementById("terminos").checked;
+
+    if(!acepta){
+        alert("Debes aceptar los Términos y Condiciones.");
+        return;
+    }
+
+    document.getElementById("registro")
+        .classList.remove("activa");
+
+    document.getElementById("presion")
+        .classList.add("activa");
+}
+
+function volverRegistro(){
+
+    document.getElementById("presion")
+        .classList.remove("activa");
+
+    document.getElementById("registro")
+        .classList.add("activa");
+}
+</script>
