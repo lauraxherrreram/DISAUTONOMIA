@@ -1,0 +1,48 @@
+.registro-card{
+    margin-top:20px;
+}
+
+.titulo-registro{
+    font-size:28px;
+    color:#2d2568;
+    margin-bottom:5px;
+}
+
+.subtitulo{
+    color:#888;
+    margin-bottom:20px;
+}
+
+.input-registro{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:15px;
+    font-size:15px;
+    background:white;
+}
+
+.input-registro:focus{
+    border-color:#7f56ff;
+}
+
+.acepto{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+}
+
+.login{
+    text-align:center;
+    margin-top:15px;
+}
+
+.login a{
+    color:#7f56ff;
+    text-decoration:none;
+}
+
+.login a:hover{
+    text-decoration:underline;
+}

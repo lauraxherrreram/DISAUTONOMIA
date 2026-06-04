@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="crear_cuenta.css">
+</head>
+<body>
+<div class="phone">
+    <div class="card">
+
+        <h2>Crear Cuenta</h2>
+        <p>Es rápido y fácil</p>
+
+        <input type="text" class="input-registro" placeholder="Nombre completo">
+        <input type="email" class="input-registro" placeholder="Correo electrónico">
+        <input type="text" class="input-registro" placeholder="Número del chip">
+        <input type="password" class="input-registro" placeholder="Contraseña">
+        <input type="password" class="input-registro" placeholder="Confirmar contraseña">
+
+        <div class="terminos">
+            <input type="checkbox" id="terminos">
+            <label>Acepto los términos y condiciones</label>
+        </div>
+
+        <button class="guardar" onclick="registrar()">
+            Registrarme
+        </button>
+
+    </div>
+</div>
+
+<script>
+function registrar(){
+
+    const acepta = document.getElementById("terminos").checked;
+
+    if(!acepta){
+        alert("Debes aceptar los términos y condiciones");
+        return;
+    }
+
+    window.location.href = "presion.html";
+}
+</script>
