@@ -1,54 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Presión Arterial</title>
+
 <link rel="stylesheet" href="index.css">
+
 </head>
+
 <body>
 
 <div class="phone">
-    <div id="historial" class="pantalla">
 
-    <div class="header">
-        <span class="back" onclick="volverPresion()">←</span>
-        <h1>Historial</h1>
-    </div>
-
-    <div class="card">
-        <h2>Historial de Presiones</h2>
-
-        <p>
-            Aquí irá la pantalla que hará mi compañera.
-        </p>
-    </div>
-
-</div>
-
+    <!-- REGISTRO -->
     <div id="registro" class="pantalla activa">
 
-        <div class="card registro-card">
+        <div class="card">
 
-            <h2 class="titulo-registro">Crear Cuenta</h2>
-            <p class="subtitulo">Es rápido y fácil</p>
+            <h2>Crear Cuenta</h2>
+            <p>Es rápido y fácil</p>
 
             <input type="text" class="input-registro" placeholder="Nombre completo">
 
             <input type="email" class="input-registro" placeholder="Correo electrónico">
 
-            <input type="text" class="input-registro" placeholder="Numero del chip">
+            <input type="text" class="input-registro" placeholder="Número del chip">
 
             <input type="password" class="input-registro" placeholder="Contraseña">
 
             <input type="password" class="input-registro" placeholder="Confirmar contraseña">
-            <div class="terminos">
-    <input type="checkbox" id="terminos" required>
 
-    <label for="terminos">
-        Acepto los Términos y Condiciones y la Política de Privacidad
-    </label>
-</div>
+            <div class="terminos">
+                <input type="checkbox" id="terminos">
+                <label>Acepto los términos y condiciones</label>
+            </div>
 
             <button class="guardar" onclick="registrar()">
                 Registrarme
@@ -58,6 +45,7 @@
 
     </div>
 
+    <!-- PRESION -->
     <div id="presion" class="pantalla">
 
         <div class="header">
@@ -66,9 +54,17 @@
         </div>
 
         <div class="tabs">
-    <button class="active">Registro</button>
-    <button onclick="irHistorial()">Historial</button>
-</div>
+
+            <button class="active">
+                Registro
+            </button>
+
+            <button onclick="irHistorial()">
+                Historial
+            </button>
+
+        </div>
+
         <div class="fecha">
             Hoy, 06 de mayo
         </div>
@@ -109,31 +105,72 @@ Me sentí un poco mareada al levantarme.
 
         </div>
 
-        <div class="bottom-nav">
-            <div class="nav-item active">
-                🏠
-                <span>Inicio</span>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div id="historial" class="pantalla">
+
+        <div class="header">
+            <span class="back" onclick="volverPresion()">←</span>
+            <h1>Historial</h1>
+        </div>
+
+        <div class="card">
+
+            <h2>Historial de Presiones</h2>
+
+            <div class="historial-container">
+
+                <select class="filtro">
+                    <option>Últimos 7 días</option>
+                    <option>Últimos 30 días</option>
+                </select>
+
+                <div class="historial-item">
+                    <div>
+                        <h3>26 Mayo</h3>
+                        <p>8:30 AM</p>
+                    </div>
+
+                    <div class="presion-numero">
+                        98/63 <span>mmHg</span>
+                    </div>
+
+                    <div class="estado baja">Baja</div>
+                </div>
+
+                <div class="historial-item">
+                    <div>
+                        <h3>23 Mayo</h3>
+                        <p>7:45 AM</p>
+                    </div>
+
+                    <div class="presion-numero">
+                        102/68 <span>mmHg</span>
+                    </div>
+
+                    <div class="estado baja">Baja</div>
+                </div>
+
+                <div class="historial-item">
+                    <div>
+                        <h3>22 Mayo</h3>
+                        <p>9:10 AM</p>
+                    </div>
+
+                    <div class="presion-numero">
+                        110/72 <span>mmHg</span>
+                    </div>
+
+                    <div class="estado normal">Normal</div>
+                </div>
+
+                <button class="btn-graficos">
+                    Ver gráficos
+                </button>
+
             </div>
 
-            <div class="nav-item">
-                📝
-                <span>Registro</span>
-            </div>
-
-            <div class="nav-item">
-                📖
-                <span>Aprender</span>
-            </div>
-
-            <div class="nav-item">
-                👥
-                <span>Comunidad</span>
-            </div>
-
-            <div class="nav-item">
-                👤
-                <span>Perfil</span>
-            </div>
         </div>
 
     </div>
@@ -141,13 +178,14 @@ Me sentí un poco mareada al levantarme.
 </div>
 
 <script>
+
 function registrar(){
 
     const acepta =
         document.getElementById("terminos").checked;
 
     if(!acepta){
-        alert("Debes aceptar los Términos y Condiciones.");
+        alert("Debes aceptar los términos y condiciones");
         return;
     }
 
@@ -166,4 +204,26 @@ function volverRegistro(){
     document.getElementById("registro")
         .classList.add("activa");
 }
+
+function irHistorial(){
+
+    document.getElementById("presion")
+        .classList.remove("activa");
+
+    document.getElementById("historial")
+        .classList.add("activa");
+}
+
+function volverPresion(){
+
+    document.getElementById("historial")
+        .classList.remove("activa");
+
+    document.getElementById("presion")
+        .classList.add("activa");
+}
+
 </script>
+
+</body>
+</html>
