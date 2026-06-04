@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f3f0f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.phone-container {
+    background-color: white;
+    width: 100%;
+    max-width: 375px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 24px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5a4ca5;
+    margin-right: 15px;
+}
+
+.header h1 {
+    font-size: 18px;
+    color: #2c1a59;
+    text-align: center;
+    flex-grow: 1;
+    margin-right: 35px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #7d75a1;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+.date-selector {
+    background-color: #fbfaff;
+    border: 1px solid #eae6f5;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #4a3b80;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-card {
+    background-color: #ffffff;
+    border: 1px solid #eae6f5;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: 14px;
+    color: #2c1a59;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* Caritas de Nivel de Síntomas */
+.mood-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mood-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+}
+
+.mood-icon {
+    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    background-color: #f1edfa;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.mood-option span {
+    font-size: 11px;
+    color: #7d75a1;
+    margin-top: 6px;
+}
+
+/* Selección de nivel */
+.mood-option.selected .mood-icon {
+    background-color: #8b72e6;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Chips de Síntomas */
+.symptoms-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.symptom-chip {
+    background-color: #f1edfa;
+    color: #624fa8;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.symptom-chip.selected {
+    background-color: #8b72e6;
+    color: white;
+}
+
+/* Notas adicionales */
+.notes-area {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #eae6f5;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 13px;
+    resize: none;
+    outline: none;
+    color: #4a3b80;
+}
+
+.notes-area::placeholder {
+    color: #b5b0cd;
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background-color: #e64595;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(230, 69, 149, 0.2);
+    transition: background 0.2s;
+}
+
+.btn-guardar:hover {
+    background-color: #cc3681;
+}

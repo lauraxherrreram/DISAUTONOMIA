@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Síntomas - Disautonomía</title>
+    <link rel="stylesheet" href="sintoma.css">
+</head>
+<body>
+
+<div class="phone-container">
+    <div class="header">
+        <button class="back-btn">←</button>
+        <h1>Registrar síntomas</h1>
+    </div>
+    <p class="subtitle">Cuéntanos cómo te sientes</p>
+
+    <div class="date-selector">
+        <span>‹</span>
+        <span id="fecha-actual">Hoy, 3 de junio</span>
+        <span>›</span>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Nivel de síntomas</div>
+        <div class="mood-container">
+            <div class="mood-option" onclick="seleccionarNivel('Nada', this)">
+                <div class="mood-icon">🙂</div>
+                <span>Nada</span>
+            </div>
+            <div class="mood-option" onclick="seleccionarNivel('Leve', this)">
+                <div class="mood-icon">😊</div>
+                <span>Leve</span>
+            </div>
+            <div class="mood-option" onclick="seleccionarNivel('Moderado', this)">
+                <div class="mood-icon">😐</div>
+                <span>Moderado</span>
+            </div>
+            <div class="mood-option" onclick="seleccionarNivel('Severo', this)">
+                <div class="mood-icon">🙁</div>
+                <span>Severo</span>
+            </div>
+            <div class="mood-option" onclick="seleccionarNivel('Extremo', this)">
+                <div class="mood-icon">😫</div>
+                <span>Extremo</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Síntomas principales</div>
+        <div class="symptoms-grid">
+            <div class="symptom-chip" onclick="toggleSintoma('Mareo', this)">Mareo</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Fatiga', this)">Fatiga</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Náuseas', this)">Náuseas</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Palpitaciones', this)">Palpitaciones</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Niebla mental', this)">Niebla mental</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Dolor de cabeza', this)">Dolor de cabeza</div>
+            <div class="symptom-chip" onclick="toggleSintoma('Intolerancia al calor', this)">Intolerancia al calor</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Notas adicionales</div>
+        <textarea class="notes-area" id="notas" placeholder="Escribe aquí cómo te sentiste..."></textarea>
+    </div>
+
+    <button class="btn-guardar" onclick="enviarRegistro()">Guardar registro</button>
+</div>
+
+<script>
+    let nivelSeleccionado = "";
+    let sintomasSeleccionados = [];
+
+    // Cambiar la fecha de forma dinámica
+    const opcionesFecha = { day: 'numeric', month: 'long' };
+    document.getElementById('fecha-actual').innerText = "Hoy, " + new Date().toLocaleDateString('es-ES', opcionesFecha);
+
+    function seleccionarNivel(nivel, elemento) {
+        document.querySelectorAll('.mood-option').forEach(el => el.classList.remove('selected'));
+        elemento.classList.add('selected');
+        nivelSeleccionado = nivel;
+    }
+
+    function toggleSintoma(sintoma, elemento) {
+        elemento.classList.toggle('selected');
+        if (sintomasSeleccionados.includes(sintoma)) {
+            sintomasSeleccionados = sintomasSeleccionados.filter(s => s !== sintoma);
+        } else {
+            sintomasSeleccionados.push(sintoma);
+        }
+    }
+
+    async function enviarRegistro() {
+        if (!nivelSeleccionado) {
+            alert("Por favor, selecciona un nivel de síntomas antes de guardar.");
+            return;
+        }
+
+        const notas = document.getElementById('notas').value;
+        const listaSintomasTexto = sintomasSeleccionados.join(', ');
+
+        const datosRegistro = {
+            usuario_id: 1, 
+            nivel_sintomas: nivelSeleccionado,
+            sintomas_principales: listaSintomasTexto || "Ninguno",
+            notes: notas
+        };
+
+        // AQUÍ REPARÉ EL ERROR: Añadí el 'try {' que faltaba para que el botón funcione
+        try {
+            const respuesta = await fetch('http://localhost:3000/sintoma', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datosRegistro)
+            });
+
+            const resultado = await respuesta.json();
+            
+            if (resultado.mensaje) {
+                alert('¡Registro de síntomas guardado con éxito en phpMyAdmin! 🎉');
+                document.getElementById('notas').value = "";
+                document.querySelectorAll('.mood-option, .symptom-chip').forEach(el => el.classList.remove('selected'));
+                nivelSeleccionado = "";
+                sintomasSeleccionados = [];
+            }
+        } catch (error) {
+            alert('Error al conectar con tu servidor. Revisa que esté encendido.');
+            console.error(error);
+        }
+    }
+</script>
+
+</body>
+</html>
