@@ -23,7 +23,7 @@ async function guardarPresion() {
     try {
 
         const respuesta = await fetch(
-            "http://localhost:3000/presion",
+           "http://192.168.161.107:3000/usuario",
             {
                 method: "POST",
                 headers: {
