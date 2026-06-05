@@ -7,18 +7,24 @@
     <title>Crear Cuenta</title>
     <link rel="stylesheet" href="crear_cuenta.css">
 </head>
+
 <body>
+
 <div class="phone">
     <div class="card">
 
         <h2>Crear Cuenta</h2>
         <p>Es rápido y fácil</p>
 
-        <input type="text" class="input-registro" placeholder="Nombre completo">
-        <input type="email" class="input-registro" placeholder="Correo electrónico">
-        <input type="text" class="input-registro" placeholder="Número del chip">
-        <input type="password" class="input-registro" placeholder="Contraseña">
-        <input type="password" class="input-registro" placeholder="Confirmar contraseña">
+        <input type="text" id="nombre" class="input-registro" placeholder="Nombre completo">
+
+        <input type="email" id="correo" class="input-registro" placeholder="Correo electrónico">
+
+        <input type="text" id="chip" class="input-registro" placeholder="Número del chip">
+
+        <input type="password" id="password" class="input-registro" placeholder="Contraseña">
+
+        <input type="password" id="confirmar" class="input-registro" placeholder="Confirmar contraseña">
 
         <div class="terminos">
             <input type="checkbox" id="terminos">
@@ -32,16 +38,7 @@
     </div>
 </div>
 
-<script>
-function registrar(){
+<script src="crear_cuenta.js"></script>
 
-    const acepta = document.getElementById("terminos").checked;
-
-    if(!acepta){
-        alert("Debes aceptar los términos y condiciones");
-        return;
-    }
-
-    window.location.href = "sintoma.html";
-}
-</script>
+</body>
+</html>
