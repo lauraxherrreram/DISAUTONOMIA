@@ -11,7 +11,7 @@
 <div class="phone">
 
     <div class="header">
-        <span class="back" onclick="window.location.href='registro.html'">←</span>
+        <span class="back" onclick="window.location.href='sintoma.html'">←</span>
         <h1>Presión arterial</h1>
     </div>
 
@@ -69,3 +69,16 @@
 
 </body>
 </html>
+<script>
+function registrar(){
+
+    const acepta = document.getElementById("terminos").checked;
+
+    if(!acepta){
+        alert("Debes aceptar los términos y condiciones");
+        return;
+    }
+
+    window.location.href = "sintoma.html";
+}
+</script>
