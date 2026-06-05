@@ -25,41 +25,47 @@
         </button>
     </div>
 
-    <div class="fecha">
-        Hoy, 06 de mayo
-    </div>
+    <div class="fecha" id="fecha-actual"></div>
 
     <div class="card">
 
-        <div class="fecha-registro">
-            <span>06 de mayo, 2024</span>
-            <span>8:30 AM</span>
-        </div>
-
         <div class="presion-box">
-            <h2>98/63 mmHg</h2>
-            <span>💗 Baja</span>
+
+            <input
+                type="text"
+                id="presion"
+                placeholder="Ej: 120/80 mmHg"
+                style="
+                    width:100%;
+                    text-align:center;
+                    font-size:28px;
+                    font-weight:bold;
+                    border:none;
+                    outline:none;
+                    background:transparent;
+                    padding:15px;
+                "
+            >
+
         </div>
 
         <h3>Síntomas asociados</h3>
 
-        <div class="chips">
-            <span>Mareo</span>
-            <span>Fatiga</span>
-            <span>Náuseas</span>
-            <span>Palpitaciones</span>
-            <span>Niebla mental</span>
-            <span>Dolor de cabeza</span>
-            <span>Intolerancia al calor</span>
-        </div>
+        <!-- Aquí aparecerán los síntomas -->
 
         <br>
 
         <h3>Notas adicionales</h3>
 
-        <textarea placeholder="Escribe aquí tus observaciones...">Me sentí un poco mareada al levantarme.</textarea>
+        <textarea
+            placeholder="Escribe aquí tus observaciones..."
+            rows="4"
+            style="width:100%;"
+        ></textarea>
 
-        <button class="guardar">
+        <br><br>
+
+        <button class="guardar" onclick="guardarPresion()">
             Guardar
         </button>
 
@@ -67,18 +73,7 @@
 
 </div>
 
+<script src="Presion.js"></script>
+
 </body>
 </html>
-<script>
-function registrar(){
-
-    const acepta = document.getElementById("terminos").checked;
-
-    if(!acepta){
-        alert("Debes aceptar los términos y condiciones");
-        return;
-    }
-
-    window.location.href = "sintoma.html";
-}
-</script>
