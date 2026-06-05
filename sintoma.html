@@ -10,7 +10,7 @@
 
 <div class="phone-container">
     <div class="header">
-        <button class="back-btn">←</button>
+        <a href="crear_cuenta.html" class="back-btn" style="text-decoration: none; color: inherit; line-height: 1;">←</a>
         <h1>Registrar síntomas</h1>
     </div>
     <p class="subtitle">Cuéntanos cómo te sientes</p>
@@ -100,14 +100,14 @@
         const notas = document.getElementById('notas').value;
         const listaSintomasTexto = sintomasSeleccionados.join(', ');
 
+        // Variables ajustadas a los nombres reales de la base de datos
         const datosRegistro = {
-            usuario_id: 1, 
-            nivel_sintomas: nivelSeleccionado,
+            id_usuario: 1,
+            nivel_sintoma: nivelSeleccionado,
             sintomas_principales: listaSintomasTexto || "Ninguno",
-            notes: notas
+            notas_adicionales: notas
         };
 
-        // AQUÍ REPARÉ EL ERROR: Añadí el 'try {' que faltaba para que el botón funcione
         try {
             const respuesta = await fetch('http://localhost:3000/sintoma', {
                 method: 'POST',
@@ -118,11 +118,13 @@
             const resultado = await respuesta.json();
             
             if (resultado.mensaje) {
-                alert('¡Registro de síntomas guardado con éxito en phpMyAdmin! 🎉');
+                alert('¡Registro de síntomas guardado con éxito ! 🎉');
                 document.getElementById('notas').value = "";
                 document.querySelectorAll('.mood-option, .symptom-chip').forEach(el => el.classList.remove('selected'));
                 nivelSeleccionado = "";
                 sintomasSeleccionados = [];
+                
+                window.location.href = "presion.html";
             }
         } catch (error) {
             alert('Error al conectar con tu servidor. Revisa que esté encendido.');
