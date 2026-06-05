@@ -1,16 +1,58 @@
-.registro-card{
-    margin-top:20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
 }
 
-.titulo-registro{
-    font-size:28px;
+body{
+    background:#e8e8e8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* Marco del celular */
+.phone{
+    width:390px;
+    height:844px;
+    background:#f7f2ff;
+    border:10px solid #222;
+    border-radius:40px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Cámara superior */
+.phone::before{
+    content:"";
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:25px;
+    background:#222;
+    border-radius:20px;
+}
+
+/* Contenido */
+.card{
+    padding:70px 25px 25px;
+    height:100%;
+}
+
+h2{
+    font-size:30px;
     color:#2d2568;
     margin-bottom:5px;
 }
 
-.subtitulo{
-    color:#888;
-    margin-bottom:20px;
+p{
+    color:#777;
+    margin-bottom:25px;
 }
 
 .input-registro{
@@ -24,25 +66,32 @@
 }
 
 .input-registro:focus{
+    outline:none;
     border-color:#7f56ff;
 }
 
-.acepto{
+.terminos{
     display:flex;
+    align-items:center;
     gap:10px;
-    margin:15px 0;
+    margin:15px 0 20px;
+    font-size:14px;
+    color:#555;
 }
 
-.login{
-    text-align:center;
-    margin-top:15px;
+.guardar{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:20px;
+    background:#7f56ff;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.login a{
-    color:#7f56ff;
-    text-decoration:none;
-}
-
-.login a:hover{
-    text-decoration:underline;
+.guardar:hover{
+    background:#6842e0;
 }

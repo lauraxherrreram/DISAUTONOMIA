@@ -1,7 +1,45 @@
-/* ==========================
-   PRESION ARTERIAL
-========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
 
+body{
+    background:#ececec;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* Marco del celular */
+.phone{
+    width:390px;
+    height:844px;
+    background:#f7f2ff;
+    border:10px solid #222;
+    border-radius:40px;
+    overflow-y:auto;
+    position:relative;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    padding:60px 20px 20px;
+}
+
+/* Cámara superior */
+.phone::before{
+    content:"";
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:25px;
+    background:#222;
+    border-radius:20px;
+}
+
+/* Encabezado */
 .header{
     display:flex;
     align-items:center;
@@ -13,13 +51,15 @@
     font-size:24px;
     color:#2d2568;
     cursor:pointer;
+    font-weight:bold;
 }
 
 h1{
-    font-size:18px;
+    font-size:22px;
     color:#2d2568;
 }
 
+/* Pestañas */
 .tabs{
     display:flex;
     gap:10px;
@@ -33,6 +73,7 @@ h1{
     border-radius:20px;
     background:#ececec;
     cursor:pointer;
+    font-size:15px;
 }
 
 .tabs .active{
@@ -41,26 +82,33 @@ h1{
     font-weight:bold;
 }
 
+/* Fecha */
 .fecha{
     background:white;
     padding:15px;
     border-radius:15px;
     text-align:center;
     margin-bottom:20px;
+    color:#666;
 }
 
+/* Tarjeta principal */
 .card{
     background:white;
     border-radius:25px;
     padding:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 .fecha-registro{
     display:flex;
     justify-content:space-between;
     margin-bottom:15px;
+    color:#666;
+    font-size:14px;
 }
 
+/* Presión */
 .presion-box{
     background:#f1e8ff;
     border-radius:20px;
@@ -70,10 +118,24 @@ h1{
 }
 
 .presion-box h2{
-    font-size:50px;
+    font-size:42px;
     color:#2f2389;
+    margin-bottom:10px;
 }
 
+.presion-box span{
+    color:#7a4dff;
+    font-weight:bold;
+}
+
+/* Títulos */
+h3{
+    margin-bottom:10px;
+    margin-top:10px;
+    color:#2d2568;
+}
+
+/* Síntomas */
 .chips{
     display:flex;
     flex-wrap:wrap;
@@ -85,18 +147,22 @@ h1{
     color:#5330c7;
     padding:8px 14px;
     border-radius:20px;
+    font-size:14px;
 }
 
+/* Notas */
 textarea{
     width:100%;
     height:100px;
     margin-top:10px;
     border:1px solid #ddd;
     border-radius:15px;
-    padding:10px;
+    padding:12px;
     resize:none;
+    font-size:14px;
 }
 
+/* Botón Guardar */
 .guardar{
     width:100%;
     margin-top:20px;
@@ -106,5 +172,11 @@ textarea{
     background:linear-gradient(90deg,#ff72c9,#f874ed);
     color:white;
     font-size:18px;
+    font-weight:bold;
     cursor:pointer;
+    transition:.3s;
+}
+
+.guardar:hover{
+    transform:scale(1.02);
 }
