@@ -20,7 +20,7 @@
             Registro
         </button>
 
-        <button onclick="window.location.href='historial.html'">
+        <button onclick="window.location.href='index.html'">
             Historial
         </button>
     </div>
@@ -35,6 +35,7 @@
                 type="text"
                 id="presion"
                 placeholder="Ej: 120/80 mmHg"
+                oninput="evaluarPresion()"
                 style="
                     width:100%;
                     text-align:center;
@@ -47,6 +48,10 @@
                 "
             >
 
+            <div id="estado-presion" class="estado-presion">
+                Ingresa una presión arterial
+            </div>
+
         </div>
 
         <h3>Síntomas asociados</h3>
@@ -56,17 +61,6 @@
         </div>
 
         <br>
-
-        <h3>Notas adicionales</h3>
-
-        <textarea
-            id="notas"
-            placeholder="Escribe aquí tus observaciones..."
-            rows="4"
-            style="width:100%;"
-        ></textarea>
-
-        <br><br>
 
         <button class="guardar" onclick="guardarPresion()">
             Guardar

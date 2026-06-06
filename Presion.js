@@ -10,10 +10,49 @@ window.onload = function() {
 
 };
 
+function evaluarPresion() {
+
+    const presion = document.getElementById("presion").value;
+
+    const partes = presion.split("/");
+
+    if (partes.length !== 2) {
+        document.getElementById("estado-presion").innerHTML =
+            "Ingresa una presión válida";
+        return;
+    }
+
+    const sistolica = parseInt(partes[0]);
+    const diastolica = parseInt(partes[1]);
+
+    if (isNaN(sistolica) || isNaN(diastolica)) {
+        document.getElementById("estado-presion").innerHTML =
+            "Ingresa una presión válida";
+        return;
+    }
+
+    if (sistolica > 130 || diastolica > 85) {
+
+        document.getElementById("estado-presion").innerHTML =
+            "⚠️ Presión Alta";
+
+    } else if (sistolica < 90 || diastolica < 60) {
+
+        document.getElementById("estado-presion").innerHTML =
+            "🛏️ Presión Baja";
+
+    } else {
+
+        document.getElementById("estado-presion").innerHTML =
+            "✅ Presión Normal";
+
+    }
+}
+
 async function guardarPresion() {
 
     const presion = document.getElementById("presion").value;
-    const notas = document.getElementById("notas").value;
+    const notas = "";
 
     if (presion.trim() === "") {
         alert("Ingresa la presión arterial.");
@@ -42,7 +81,8 @@ async function guardarPresion() {
         alert(resultado.mensaje);
 
         document.getElementById("presion").value = "";
-        document.getElementById("notas").value = "";
+        document.getElementById("estado-presion").innerHTML =
+            "Ingresa una presión arterial";
 
     } catch (error) {
 

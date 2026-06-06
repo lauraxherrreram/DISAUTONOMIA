@@ -180,3 +180,10 @@ textarea{
 .guardar:hover{
     transform:scale(1.02);
 }
+.estado-presion{
+    margin-top:15px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    color:#2d2568;
+}

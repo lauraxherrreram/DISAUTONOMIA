@@ -43,18 +43,16 @@ async function registrar() {
         const resultado = await respuesta.json();
 
         if (resultado.error) {
-            alert("Error: " + resultado.error);
+            alert("Error en el servidor: " + resultado.error);
             return;
         }
 
-        alert("Usuario guardado con éxito");
+        alert("¡Usuario guardado con éxito en tu base de datos! 🎉");
 
         window.location.href = "sintoma.html";
 
     } catch (error) {
-
         console.error(error);
         alert("Error al conectar con el servidor");
-
     }
 }
