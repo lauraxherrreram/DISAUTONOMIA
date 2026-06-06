@@ -23,9 +23,9 @@ async function registrar() {
     }
 
     try {
-
+        // Corregido a localhost para que conecte de inmediato en tu computadora
         const respuesta = await fetch(
-            "http://localhost:3000/usuario",
+            "http://localhost:3000/usuario", 
             {
                 method: "POST",
                 headers: {
@@ -43,18 +43,17 @@ async function registrar() {
         const resultado = await respuesta.json();
 
         if (resultado.error) {
-            alert("Error: " + resultado.error);
+            alert("Error en el servidor: " + resultado.error);
             return;
         }
 
-        alert("Usuario guardado con éxito");
-
+        alert("¡Usuario guardado con éxito en tu base de datos! 🎉");
+        
+        // Te redirige a la pantalla de síntomas que me acabas de pasar
         window.location.href = "sintoma.html";
 
     } catch (error) {
-
         console.error(error);
-        alert("Error al conectar con el servidor");
-
+        alert("Error al conectar con el servidor local. Asegúrate de tener la terminal activa con node server.js");
     }
 }
