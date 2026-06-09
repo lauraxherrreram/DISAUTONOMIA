@@ -1,6 +1,4 @@
-/* =======================================================
-   ESTILOS GENERALES
-   ======================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -138,28 +136,26 @@ h3 {
     color: #2d2568;
 }
 
-/* =======================================================
-   🚨 SISTEMA DE ÓVALOS PARA SÍNTOMAS ASOCIADOS (REPARADO)
-   ======================================================= */
+
 #lista-sintomas {
-    display: flex;         /* Distribuye los elementos en bloque alineado */
-    flex-wrap: wrap;       /* Hace que si no caben, salten a la línea de abajo */
-    gap: 10px;             /* Separa los óvalos perfectamente de forma horizontal y vertical */
+    display: flex;        
+    flex-wrap: wrap;       
+    gap: 10px;            
     margin-top: 10px;
     margin-bottom: 15px;
 }
 
 #lista-sintomas .symptom-chip {
-    background: #e7dbff;   /* Color lila idéntico a tus síntomas principales */
-    color: #5330c7;        /* Texto morado oscuro */
-    padding: 8px 16px;     /* Relleno interno para darle la forma ovalada */
-    border-radius: 20px;   /* Curva total en las esquinas */
-    font-size: 14px;       /* Tamaño de la fuente legible */
+    background: #e7dbff;  
+    color: #5330c7;        
+    padding: 8px 16px;    
+    border-radius: 20px;   
+    font-size: 14px;       
     font-weight: 500;
     display: inline-block;
 }
 
-/* Notas */
+
 textarea {
     width: 100%;
     height: 100px;
@@ -171,7 +167,7 @@ textarea {
     font-size: 14px;
 }
 
-/* Botón Guardar */
+
 .guardar {
     width: 100%;
     margin-top: 20px;
