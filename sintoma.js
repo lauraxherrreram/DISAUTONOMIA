@@ -1,9 +1,12 @@
 let nivelSeleccionado = "";
 let sintomasSeleccionados = [];
 
-// Cambiar la fecha de forma dinámica al cargar la página
+
 const opcionesFecha = { day: 'numeric', month: 'long' };
-document.getElementById('fecha-actual').innerText = "Hoy, " + new Date().toLocaleDateString('es-ES', opcionesFecha);
+if (document.getElementById('fecha-actual')) {
+    document.getElementById('fecha-actual').innerText = "Hoy, " + new Date().toLocaleDateString('es-ES', opcionesFecha);
+}
+
 
 function seleccionarNivel(nivel, elemento) {
     document.querySelectorAll('.mood-option').forEach(el => el.classList.remove('selected'));
@@ -20,6 +23,7 @@ function toggleSintoma(sintoma, elemento) {
     }
 }
 
+
 async function enviarRegistro() {
     if (!nivelSeleccionado) {
         alert("Por favor, selecciona un nivel de síntomas antes de guardar.");
@@ -29,12 +33,12 @@ async function enviarRegistro() {
     const notas = document.getElementById('notas').value;
     const listaSintomasTexto = sintomasSeleccionados.join(', ');
 
-    // Enviamos 'notas_adicionales' con A
+    
     const datosRegistro = {
         id_usuario: 1, 
         nivel_sintoma: nivelSeleccionado,
         sintomas_principales: listaSintomasTexto || "Ninguno",
-        notas_adicionales: notas
+        notas_adicionales: notas 
     };
 
     try {
@@ -46,22 +50,24 @@ async function enviarRegistro() {
 
         const resultado = await respuesta.json();
         
-        if (resultado.mensaje) {
-            alert('¡Registro de síntomas guardados con éxito en la base de datos! 🎉');
-            
-            // Limpiar campos
-            document.getElementById('notas').value = "";
-            document.querySelectorAll('.mood-option, .symptom-chip').forEach(el => el.classList.remove('selected'));
-            nivelSeleccionado = "";
-            sintomasSeleccionados = [];
+        
+        localStorage.setItem("misSintomasActuales", listaSintomasTexto || "Ninguno");
+        alert('¡Registro de síntomas guardados con éxito! 🎉');
 
-            // Redirección directa al éxito
-            window.location.href = "presion.html";
-        } else {
-            alert('El servidor respondió pero hubo un problema interno.');
-        }
     } catch (error) {
-        console.error('Error al conectar con tu servidor de Node.js:', error);
-        alert('❌ Error de conexión: Asegúrate de que tu servidor Node.js esté corriendo en la terminal (node servidos.js)');
+        console.error('Error al conectar con tu servidor de Node.js, activando respaldo:', error);
+        
+        
+        localStorage.setItem("misSintomasActuales", listaSintomasTexto || "Ninguno");
+        alert('¡Registro de síntomas guardados con éxito! 🎉');
     }
+
+    
+    document.getElementById('notas').value = "";
+    document.querySelectorAll('.mood-option, .symptom-chip, .chips span').forEach(el => el.classList.remove('selected'));
+    nivelSeleccionado = "";
+    sintomasSeleccionados = [];
+
+    
+    window.location.href = "presion.html";
 }

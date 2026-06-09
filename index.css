@@ -10,13 +10,27 @@ body{
 
 .phone{
     width:390px;
-    min-height:844px;
+    height:844px; /* Cambiado a height fijo para simular el teléfono real con scroll interno */
     background:#f7f2ff;
     border:10px solid #222;
     border-radius:40px;
-    padding:20px;
+    padding:60px 20px 20px; /* Ajustado el padding superior para la cámara */
     box-shadow:0 10px 25px rgba(0,0,0,.2);
     overflow-y:auto;
+    position:relative;
+}
+
+/* Cámara superior ficticia para simular el celular */
+.phone::before{
+    content:"";
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:25px;
+    background:#222;
+    border-radius:20px;
 }
 
 .header{
@@ -41,6 +55,7 @@ body{
     background:white;
     border-radius:25px;
     padding:20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .historial-container{
@@ -55,26 +70,7 @@ body{
     background:#f5f5f5;
     font-size:16px;
     margin-bottom:20px;
-}
-
-.historial-item{
-    background:#f8f8f8;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.historial-item h3{
-    color:#2d2568;
-    margin-bottom:5px;
-}
-
-.historial-item p{
-    color:gray;
-    font-size:14px;
+    outline: none;
 }
 
 .presion-numero{
@@ -90,18 +86,26 @@ body{
 
 .estado{
     font-weight:bold;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    display: inline-block;
 }
 
+/* Colores de estado actualizados para que actúen como etiquetas con fondo suave */
 .baja{
     color:#ff4fa3;
+    background: #ffeef6;
 }
 
 .normal{
     color:#2db9b0;
+    background: #e6f9f8;
 }
 
 .alta{
     color:#ff5c5c;
+    background: #ffeded;
 }
 
 .btn-graficos{
@@ -113,5 +117,90 @@ body{
     color:white;
     font-size:18px;
     cursor:pointer;
-    margin-top:10px;
+    margin-top:20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-graficos:hover {
+    background: #622fd0;
+}
+
+/* =======================================================
+   🚨 NUEVOS ESTILOS PARA LAS TARJETAS DEL HISTORIAL DINÁMICO
+   ======================================================= */
+#lista-historial {
+    max-height: 420px; /* Evita que el contenedor rompa la pantalla y activa el scroll */
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 2px;
+}
+
+.item-historial {
+    background: #fdfbff;
+    border: 1px solid #e9e2f9;
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.historial-header-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #e9e2f9;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.fecha-item {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+
+.presion-valor {
+    font-size: 16px;
+    color: #2d2568;
+    margin-bottom: 6px;
+}
+
+.sintoma-nivel {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.sintoma-nivel span {
+    font-weight: bold;
+    color: #ff72c9; /* Mantiene tu tono rosa de la pantalla de síntomas */
+}
+
+/* Mini óvalos de los síntomas asociados guardados */
+.mini-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.mini-chip {
+    background: #e7dbff;
+    color: #5330c7;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.notas-item {
+    font-size: 13px;
+    color: #777;
+    background: #f7f4fd;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-top: 8px;
+    border-left: 3px solid #ff72c9;
 }

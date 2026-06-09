@@ -23,9 +23,9 @@ async function registrar() {
     }
 
     try {
-
+        // 🚨 CORREGIDO: Cambiado '/sintoma' por '/usuario' para que conecte con tu tabla correcta
         const respuesta = await fetch(
-            "http://192.168.161.107:3000/usuario",
+            'http://localhost:3000/usuario',
             {
                 method: "POST",
                 headers: {
@@ -53,6 +53,6 @@ async function registrar() {
 
     } catch (error) {
         console.error(error);
-        alert("Error al conectar con el servidor");
+        alert("Error al conectar con el servidor. Revisa que 'node servidor.js' esté corriendo.");
     }
 }

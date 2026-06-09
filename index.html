@@ -1,85 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial</title>
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
 
 <div class="phone">
-
     <div id="historial">
-
         <div class="header">
             <span class="back" onclick="window.location.href='presion.html'">←</span>
             <h1>Historial</h1>
         </div>
 
         <div class="card">
-
             <h2>Historial de Presiones</h2>
-
             <div class="historial-container">
-
                 <select class="filtro">
                     <option>Últimos 7 días</option>
                     <option>Últimos 30 días</option>
                 </select>
 
-                <div class="historial-item">
-                    <div>
-                        <h3>26 Mayo</h3>
-                        <p>8:30 AM</p>
-                    </div>
-
-                    <div class="presion-numero">
-                        98/63 <span>mmHg</span>
-                    </div>
-
-                    <div class="estado baja">Baja</div>
+                <div id="lista-historial">
+                    <p style="text-align: center; color: #666; padding: 20px;">Cargando historial...</p>
                 </div>
-
-                <div class="historial-item">
-                    <div>
-                        <h3>23 Mayo</h3>
-                        <p>7:45 AM</p>
-                    </div>
-
-                    <div class="presion-numero">
-                        102/68 <span>mmHg</span>
-                    </div>
-
-                    <div class="estado baja">Baja</div>
-                </div>
-
-                <div class="historial-item">
-                    <div>
-                        <h3>22 Mayo</h3>
-                        <p>9:10 AM</p>
-                    </div>
-
-                    <div class="presion-numero">
-                        110/72 <span>mmHg</span>
-                    </div>
-
-                    <div class="estado normal">Normal</div>
-                </div>
-
-                <button class="btn-graficos">
-                    Ver gráficos
-                </button>
-
             </div>
 
+            <button class="btn-graficos" onclick="window.location.href='sintoma.html'">
+                Volver a Síntomas 
+            </button>
         </div>
-
     </div>
-
 </div>
 
+<script src="index.js"></script>
 </body>
 </html>

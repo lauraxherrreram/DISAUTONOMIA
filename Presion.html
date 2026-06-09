@@ -16,61 +16,33 @@
     </div>
 
     <div class="tabs">
-        <button class="active">
-            Registro
-        </button>
-
-        <button onclick="window.location.href='index.html'">
-            Historial
-        </button>
+        <button class="active">Registro</button>
+        <button onclick="window.location.href='index.html'">Historial</button>
     </div>
 
     <div class="fecha" id="fecha-actual"></div>
 
     <div class="card">
-
         <div class="presion-box">
-
             <input
                 type="text"
                 id="presion"
-                placeholder="Ej: 120/80 mmHg"
+                placeholder="Ej: 120/80"
                 oninput="evaluarPresion()"
-                style="
-                    width:100%;
-                    text-align:center;
-                    font-size:28px;
-                    font-weight:bold;
-                    border:none;
-                    outline:none;
-                    background:transparent;
-                    padding:15px;
-                "
+                style="width:100%; text-align:center; font-size:28px; font-weight:bold; border:none; outline:none; background:transparent; padding:15px;"
             >
-
-            <div id="estado-presion" class="estado-presion">
-                Ingresa una presión arterial
-            </div>
-
+            <div id="estado-presion" class="estado-presion">Ingresa una presión arterial</div>
         </div>
 
         <h3>Síntomas asociados</h3>
-
-        <div id="lista-sintomas">
-            <!-- Aquí aparecerán los síntomas -->
-        </div>
+        <div id="lista-sintomas"></div>
 
         <br>
-
-        <button class="guardar" onclick="guardarPresion()">
-            Guardar
-        </button>
-
+        <button class="guardar" onclick="guardarPresion()">Guardar</button>
     </div>
 
 </div>
 
 <script src="Presion.js"></script>
-
 </body>
 </html>
